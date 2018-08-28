@@ -30,6 +30,13 @@ function toggleClass(selector, className) {
   });
 }
 
+function switchClass(selector, prevClassName, nextClassName) {
+  $$(selector).forEach(function(element) {
+    element.classList.remove(prevClassName);
+    element.classList.add(nextClassName);
+  });
+}
+
 function hasClass(selector, className) {
   return Array.prototype.indexOf.call($(selector).classList, className) > -1;
 }
