@@ -6,44 +6,51 @@ const $$ = document.querySelectorAll.bind(document);
   console.log('Ready');
 })();
 
-function addEvent(selector, event, callback) {
+function addEvent(selector: string, event: Object, callback: Function) {
   $$(selector).forEach(function(element) {
     element.addEventListener(event, callback);
   });
 }
 
-function addClass(selector, className) {
+function addClass(selector: string, className: string) {
   $$(selector).forEach(function(element) {
     element.classList.add(className);
   });
 }
 
-function removeClass(selector, className) {
+function removeClass(selector: string, className: string) {
   $$(selector).forEach(function(element) {
     element.classList.remove(className);
   });
 }
 
-function toggleClass(selector, className) {
+function toggleClass(selector: string, className: string) {
   $$(selector).forEach(function(element) {
     element.classList.toggle(className);
   });
 }
 
-function switchClass(selector, prevClassName, nextClassName) {
+function switchClass(
+  selector: string,
+  prevClassName: string,
+  nextClassName: string
+) {
   $$(selector).forEach(function(element) {
     element.classList.remove(prevClassName);
     element.classList.add(nextClassName);
   });
 }
 
-function hasClass(selector, className) {
+function hasClass(selector: string, className: string) {
   return Array.prototype.indexOf.call($(selector).classList, className) > -1;
 }
 
-function toggle(selector) {
+function toggle(selector: string) {
   const el = $(selector);
-  return '' === el.style.display
-    ? (el.style.display = 'none')
-    : (el.style.display = '');
+
+  if (el.style.display === '') {
+    el.style.display = 'none';
+  } else {
+    el.style.display = '';
+  }
 }
